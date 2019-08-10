@@ -56,6 +56,6 @@ if ret_data then
 	ret_dict["type"] = ""
 	ret_dict["data"] = ret_data
 end
-common_util.http_return(200, ret_dict)
+common_util.http_return_json(200, ret_dict)
 --common_util.http_return_json(ret_dict)
 
