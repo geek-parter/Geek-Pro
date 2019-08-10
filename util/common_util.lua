@@ -152,3 +152,8 @@ end
 
 return _util
 
+function _util.http_return_json(data)
+    ngx.header.content_type = "test/json"
+    ngx.print(cjson.encode(data))
+    ngx.exit(ngx.HTTP_OK)
+end
