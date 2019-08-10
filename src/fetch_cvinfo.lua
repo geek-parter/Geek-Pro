@@ -6,14 +6,14 @@ local data = ngx.req.get_body_data()
 -------------------参数检查--------------------
 local body_tb = cjson_safe.decode(data)
 if not body_tb then
-	yuqing_util.http_return(406, "invalid json")
+	common_util.http_return(406, "invalid json")
 end
 
 local username = body_tb["username"]
 local password = body_tb["password"]
 
 if not username or username=="" or not password or password=="" then
-	yuqing_util.http_return(406, "invalid username/password")
+	common_util.http_return(406, "invalid username/password")
 end
 
 local username_md5 = ngx.md5(username)
@@ -23,9 +23,10 @@ push_data[username_md5] = {
 	["password"] = password
 }
 
-local r = redis_util.rpush(redis_conf.yq_mysql, "username", full_key, nil, unpack(push_data))
+--local r = redis_util.rpush("geek", "username", full_key, nil, unpack(push_data))
+local r = redis_util.redis_cmd('geek', "rpush", "username",cjson_safe.encode(push_data))
 if not r then
-	yuqing_util.http_return(500, "push to redis error")
+	common_util.http_return(500, "push to redis error")
 end
 
 -- 当前时间
@@ -33,7 +34,7 @@ local start_time = ngx.time()
 local time_now
 local ret_data
 while true do
-	local ret_data = redis_util.
+	local ret_data = redis_util.redis_cmd('geek', "hget", "username_", username_md5)
 	if ret_data then
 		break
 	end
@@ -55,5 +56,5 @@ if not ret_data then
 	ret_dict["data"] = ret_data
 end
 
-yuqing_util.http_return_json(ret_dict)
+common_util.http_return_json(ret_dict)
 
