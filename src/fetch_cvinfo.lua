@@ -42,13 +42,14 @@ while true do
 	if time_now - start_time > 60 then
 		break
 	end
-	ngx.sleep(0.5)
+	ngx.sleep(0.1)
 end
 
 local ret_dict = {
 	["status"] = "faield",
 	["message"] = "",
 	["type"] = "",
+	["data"] = ""
 }
 if not ret_data then
 	ret_dict["status"] = "ok"
