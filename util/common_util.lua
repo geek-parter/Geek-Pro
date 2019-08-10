@@ -149,13 +149,13 @@ function _util.string_split(str,pattern)
     end
     return sub_str
 end
-
+--[[
 function _util.http_return_json(data)
-    ngx.header.content_type = "test/json"
+    ngx.header.content_type = "text/json"
     ngx.print(cjson.encode(data))
     ngx.exit(ngx.HTTP_OK)
 end
-
+]]
 return _util
 
 
