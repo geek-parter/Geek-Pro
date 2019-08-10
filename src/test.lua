@@ -1,2 +1,2 @@
 ngx.print("test")
-ngx.end(200)
+ngx.exit(200)
