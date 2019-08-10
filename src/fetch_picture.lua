@@ -47,7 +47,7 @@ local ret_dict = {
 
 local pictur_addr = ""
 if ret_data then
-	ret_dict["status"] = "ok",
+	ret_dict["status"] = "ok"
 	ret_dict["pictur_addr"] = pictur_addr
 end
 
