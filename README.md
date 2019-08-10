@@ -1,2 +1,2 @@
 # Geek-Pro
-Geek-pro
+Geek-proj
