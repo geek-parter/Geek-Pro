@@ -42,13 +42,13 @@ end
 
 local ret_dict = {
 	["status"] = "faield",
-	["pictur_addr"] = ""
+	["picture_addr"] = ""
 }
 
 local pictur_addr = ""
 if ret_data then
 	ret_dict["status"] = "ok"
-	ret_dict["pictur_addr"] = pictur_addr
+	ret_dict["picture_addr"] = pictur_addr
 end
 
 common_util.http_return_json(200, ret_dict)
