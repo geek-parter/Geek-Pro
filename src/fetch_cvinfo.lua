@@ -51,7 +51,7 @@ local ret_dict = {
 	["type"] = "",
 	["data"] = ""
 }
-if not ret_data then
+if ret_data then
 	ret_dict["status"] = "ok"
 	ret_dict["type"] = ""
 	ret_dict["data"] = ret_data
