@@ -51,8 +51,8 @@ local ret_dict = {
 	["type"] = "",
 }
 if not ret_data then
-	ret_dict["status"] = "ok",
-	ret_dict["type"] = "",
+	ret_dict["status"] = "ok"
+	ret_dict["type"] = ""
 	ret_dict["data"] = ret_data
 end
 common_util.http_return(200, ret_dict)
