@@ -150,10 +150,12 @@ function _util.string_split(str,pattern)
     return sub_str
 end
 
-return _util
-
 function _util.http_return_json(data)
     ngx.header.content_type = "test/json"
     ngx.print(cjson.encode(data))
     ngx.exit(ngx.HTTP_OK)
 end
+
+return _util
+
+
